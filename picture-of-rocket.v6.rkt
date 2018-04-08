@@ -20,15 +20,19 @@
   (* V t)
 )
 
-(define (picture-of-rocket.v6 time)
+(define (draw-picture-of-rocket h)
   (cond
-    [(<= (distance time) ROCKET_CENTER_ON_GROUND)
-     (place-image ROCKET CANVAS_H_CENTER (distance time) CANVAS)
+    [(<= h ROCKET_CENTER_ON_GROUND)
+     (place-image ROCKET CANVAS_H_CENTER h CANVAS)
     ]
-    [(> (distance time) ROCKET_CENTER_ON_GROUND)
+    [(> h ROCKET_CENTER_ON_GROUND)
      (place-image ROCKET CANVAS_H_CENTER ROCKET_CENTER_ON_GROUND CANVAS)
     ]
   )
+)
+
+(define (picture-of-rocket.v6 time)
+  (draw-picture-of-rocket (distance time))
 )
 
 (animate picture-of-rocket.v6)
